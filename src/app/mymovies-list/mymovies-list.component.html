@@ -1,0 +1,29 @@
+<div>
+    <h1>My Movies</h1>
+    <table id="movies">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Movie</th>
+                <th>listingType</th>
+                <th>Language</th>
+                <th>Sound Effects</th>                            
+                <th>IMDB Rating</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let movie of movies">
+                <td>{{movie.imdbID}}</td>
+                <td>{{movie.title}}</td>
+                <td>{{movie.listingType}}</td>
+                <td>{{movie.language}}</td>
+                <td>{{movie.soundEffects.join(",")}}</td>
+                <td>{{movie.imdbRating}}</td>
+                <td>
+                    <button type="button" >Update</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
