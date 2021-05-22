@@ -1,5 +1,20 @@
-<div>
-    <h1>My Movies</h1>
+<div class="row">
+    <div class="col-md-6">
+    <h3 style="float:right;">My Movies Search With Title</h3> 
+    </div>
+    <div class="col-md-6 form-group">        
+        <input 
+          id="query" 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="query"
+          (keyup.enter)="getMoviesBasedOnTitleFilter()">
+     
+      <!-- <button type="button" (click)="getMoviesBasedOnTitleFilter()" class="form-control btn btn-primary">Search</button> -->
+    </div>
+</div> 
+<div class="row">
+    <div class="col-md-12">
     <table id="movies">
         <thead>
             <tr>
@@ -26,4 +41,5 @@
             </tr>
         </tbody>
     </table>
+    </div>
 </div>

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Observable } from 'rxjs/internal/Observable';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { MymoviesServiceService } from '../mymovies-service.service';
+
 
 @Component({
   selector: 'app-mymovies-list',
@@ -12,6 +14,9 @@ import { MymoviesServiceService } from '../mymovies-service.service';
 export class MymoviesListComponent implements OnInit {
   subscription: Subscription
   movies: any;
+  query: string;
+  movies$: Observable<Array<any>>;
+
   constructor(
     private spinner: NgxSpinnerService,
     private router: Router,
@@ -36,15 +41,25 @@ export class MymoviesListComponent implements OnInit {
 
   //Data from WebAPI
   getMoviesList() {
-    // Condition check for Initiation dates and Visit Happening dates
+    // Condition check for Initiation dates and Movie Happening dates
 
-        //Subscribing to the visit list data from backend
+        //Subscribing to the Movie list data from backend
         this.subscription = this.moviesService.getMovies().subscribe(res => {          
             this.movies = JSON.parse(res['_body']);
             this.hideSpinner();
-          // this.hideSpinner();
         });
   }
+  getMoviesBasedOnTitleFilter() {
+    if(this.query !=""){    
+        this.subscription = this.moviesService.getMovieDetailsByTitle(this.query).subscribe(res => {          
+            this.movies = JSON.parse(res['_body']);
+            this.hideSpinner();
+        });
+      }else{
+        this.getMoviesList();
+      }
+  }
+  // this.movies$ = this.movieService.searchMovie(this.query);
   viewMovieDetails(movie:any){
     
     debugger;
