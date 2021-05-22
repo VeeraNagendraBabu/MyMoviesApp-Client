@@ -18,4 +18,10 @@ export class MymoviesServiceService {
   public getMovies(){
     return this.http.get('/api/Movies/Movies');  
   }
+  public getMovieDetailsByID(id:any){
+    return this.http.get('/api/Movies/MovieByImdbID/'+id);  
+  }
+  public getMovieDetailsByTitle(title:any){
+    return this.http.get('/api/Movies/MovieByTitle/'+title);  
+  }
 }

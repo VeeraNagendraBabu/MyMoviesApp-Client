@@ -21,7 +21,7 @@
                 <td>{{movie.soundEffects.join(",")}}</td>
                 <td>{{movie.imdbRating}}</td>
                 <td>
-                    <button type="button" >Update</button>
+                    <button type="button" (click)="viewMovieDetails(movie)" >View</button>
                 </td>
             </tr>
         </tbody>

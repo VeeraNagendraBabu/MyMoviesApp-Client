@@ -1,1 +1,48 @@
-<p>mymovies-view works!</p>
+<div 
+  class="container"
+  *ngIf="movieDetils | async as movie">
+
+  <!-- <pre>{{ movie | json }}</pre> -->
+  <button class="btn btn-primary" routerLink="/">Go Back</button>
+
+  <!-- Portfolio Item Heading -->
+  <h1 class="my-4">{{ movie.title }}
+    <small>
+      <span class="badge badge-primary">
+        {{ movie.imdbRating }}
+      </span>
+    </small>
+  </h1>
+
+  <!-- Portfolio Item Row -->
+  <div class="row">
+
+    <div class="col-md-8">
+      <img 
+        class="img-fluid" 
+        [src]="movie.poster | defaultImage" 
+        [alt]="movie.title"/> 
+    </div>
+
+    <div class="col-md-4">
+      <span 
+        class="badge badge-success"
+        *ngFor="let title of movie.Title | splitString : ', '">
+        {{ title }}
+      </span>
+
+      <h3 class="my-3">Plot</h3>
+      <p>{{ movie.plot }}</p>
+
+      <h3 class="my-3">Ratings</h3>
+      <ul class="list-group">
+        <li>
+          {{ movie.imdbRating }} 
+        </li>
+      </ul>
+
+      <h3 class="my-3">Plot</h3>
+      <p>{{ movie.plot }}</p>
+    </div>
+
+  </div>

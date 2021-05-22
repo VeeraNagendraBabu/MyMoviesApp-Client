@@ -16,8 +16,7 @@ export class MymoviesListComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private router: Router,
     private moviesService: MymoviesServiceService,
-    private route: ActivatedRoute
-   
+    private route: ActivatedRoute   
   ) { }
 
   ngOnInit(): void {
@@ -43,8 +42,12 @@ export class MymoviesListComponent implements OnInit {
         this.subscription = this.moviesService.getMovies().subscribe(res => {          
             this.movies = JSON.parse(res['_body']);
             this.hideSpinner();
-         debugger;
           // this.hideSpinner();
         });
+  }
+  viewMovieDetails(movie:any){
+    
+    debugger;
+    this.router.navigateByUrl('movies/' + movie.imdbID);
   }
 }
