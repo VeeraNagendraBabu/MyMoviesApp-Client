@@ -30,6 +30,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('MyMoviesApp-client app is running!');
+    expect(compiled.querySelector('.toolbar .spacer span').textContent).toContain('My Movies Application');
   });
 });
