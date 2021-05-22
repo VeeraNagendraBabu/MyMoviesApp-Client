@@ -1,48 +1,50 @@
 <div 
   class="container"
-  *ngIf="movieDetils | async as movie">
-
-  <!-- <pre>{{ movie | json }}</pre> -->
-  <button class="btn btn-primary" routerLink="/">Go Back</button>
-
+  *ngIf="movie">
+  <div class="col-md-12">
+  <button class="btn btn-primary" routerLink="/movies">Go Back</button>
+  </div>
   <!-- Portfolio Item Heading -->
-  <h1 class="my-4">{{ movie.title }}
+  <div class="row"></div>
+  <h1 class="col-md-12">{{ movie.title }}
     <small>
       <span class="badge badge-primary">
         {{ movie.imdbRating }}
       </span>
     </small>
   </h1>
-
+  </div>
   <!-- Portfolio Item Row -->
   <div class="row">
 
-    <div class="col-md-8">
-      <img 
-        class="img-fluid" 
-        [src]="movie.poster | defaultImage" 
+    <div class="col-md-4">
+      <img width="300" height="443"
+       [src]="movie.poster" 
         [alt]="movie.title"/> 
     </div>
 
-    <div class="col-md-4">
-      <span 
-        class="badge badge-success"
-        *ngFor="let title of movie.Title | splitString : ', '">
-        {{ title }}
-      </span>
-
-      <h3 class="my-3">Plot</h3>
-      <p>{{ movie.plot }}</p>
-
-      <h3 class="my-3">Ratings</h3>
-      <ul class="list-group">
-        <li>
-          {{ movie.imdbRating }} 
-        </li>
-      </ul>
-
-      <h3 class="my-3">Plot</h3>
+    <div class="col-md-8">
+        <div class="col-md-8">
+        <h3 >Plot</h3>
       <p>{{ movie.plot }}</p>
     </div>
+    <div class="col-md-8">
+        <h3 >Ratings</h3>
+      <p> {{ movie.imdbRating }} </p>
+    </div>
+    <div class="col-md-8">
+        <h3 >Sound Effects</h3>
+      <p> {{ movie.soundEffects.join(",") | titlecase}} </p>
+    </div>
+    </div>
+ </div>
 
-  </div>
+  <div class="row">
+
+    <div class="col-md-4" *ngFor="let still of movie.stills">
+           
+      <img width="300" height="300"
+       [src]="still" 
+        [alt]="movie.title"/> 
+    </div>
+</div>

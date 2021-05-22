@@ -5,7 +5,7 @@
             <tr>
                 <th>#</th>
                 <th>Movie</th>
-                <th>listingType</th>
+                <th>Listing Type</th>
                 <th>Language</th>
                 <th>Sound Effects</th>                            
                 <th>IMDB Rating</th>
@@ -16,9 +16,9 @@
             <tr *ngFor="let movie of movies">
                 <td>{{movie.imdbID}}</td>
                 <td>{{movie.title}}</td>
-                <td>{{movie.listingType}}</td>
-                <td>{{movie.language}}</td>
-                <td>{{movie.soundEffects.join(",")}}</td>
+                <td>{{movie.listingType.replace('_', ' ') | titlecase}}</td>
+                <td>{{movie.language | titlecase}}</td>
+                <td>{{movie.soundEffects.join(",") | titlecase}}</td>
                 <td>{{movie.imdbRating}}</td>
                 <td>
                     <button type="button" (click)="viewMovieDetails(movie)" >View</button>
